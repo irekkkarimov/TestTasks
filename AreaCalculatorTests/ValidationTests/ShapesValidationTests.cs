@@ -1,7 +1,6 @@
 using AreaCalculator.Handlers;
 using AreaCalculator.Shapes;
 using AreaCalculatorTests.Utils;
-using Xunit.Sdk;
 
 namespace AreaCalculatorTests.ValidationTests;
 
@@ -23,7 +22,7 @@ public class ShapesValidationTests
     [InlineData(new double[] { 10, 2, 3 }, ExceptionMessages.OneSideLengthGreaterThanSumOfOthers)]
     [InlineData(new double[] { 0, 1, 2 }, ExceptionMessages.SideLengthIsLessThanOrEqualZero)]
     [InlineData(new double[] { -1, 1, 1 }, ExceptionMessages.SideLengthIsLessThanOrEqualZero)]
-    [InlineData(new double[] { 1, 2 }, ExceptionMessages.TriangleCreationWithLessThanThreeArguments)]
+    [InlineData(new double[] { 1, 2 }, ExceptionMessages.TriangleCreationWithNotThreeArguments)]
     public void TriangleValidationThrowsException(double[] args, string exceptionMessage)
     {
         // Arrange, Act

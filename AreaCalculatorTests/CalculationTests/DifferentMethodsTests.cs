@@ -1,6 +1,6 @@
 using AreaCalculator.Shapes;
 
-namespace AreaCalculatorTests.CalculatorTests;
+namespace AreaCalculatorTests.CalculationTests;
 
 public class DifferentMethodsTests
 {

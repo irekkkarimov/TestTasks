@@ -10,7 +10,7 @@ public class AreaCalculatorGeneric
         {
             case 0:
             {
-                throw new ArgumentException("No parameters were received!");
+                throw new Exception("No parameters were received!");
             }
             case 1:
             {

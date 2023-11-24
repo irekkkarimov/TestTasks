@@ -12,7 +12,11 @@
       <change beforePath="$PROJECT_DIR$/AreaCalculator/Shapes/Circle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculator/Shapes/Circle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AreaCalculatorTests/CalculationTests/ShapesCalculationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculatorTests/CalculationTests/ShapesCalculationTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AreaCalculatorTests/ValidationTests/ShapesValidationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculatorTests/ValidationTests/ShapesValidationTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AreaCalculatorTests/bin/Debug/net7.0/AreaCalculatorTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculatorTests/bin/Debug/net7.0/AreaCalculatorTests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AreaCalculatorTests/bin/Debug/net7.0/AreaCalculatorTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculatorTests/bin/Debug/net7.0/AreaCalculatorTests.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AreaCalculatorTests/obj/Debug/net7.0/AreaCalculatorTests.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculatorTests/obj/Debug/net7.0/AreaCalculatorTests.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AreaCalculatorTests/obj/Debug/net7.0/AreaCalculatorTests.dll" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculatorTests/obj/Debug/net7.0/AreaCalculatorTests.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AreaCalculatorTests/obj/Debug/net7.0/AreaCalculatorTests.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/AreaCalculatorTests/obj/Debug/net7.0/AreaCalculatorTests.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700845734044</updated>
       <workItem from="1700845735096" duration="7892000" />
-      <workItem from="1700857631582" duration="297000" />
+      <workItem from="1700857631582" duration="773000" />
     </task>
     <servers />
   </component>

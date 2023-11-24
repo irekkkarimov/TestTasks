@@ -33,12 +33,13 @@ public class ShapesValidationTests
     }
 
     [Theory]
-    [InlineData(0, ExceptionMessages.RadiusIsLessThanOrEqualZero)]
-    [InlineData(-1, ExceptionMessages.RadiusIsLessThanOrEqualZero)]
-    public void CircleValidationThrowsException(double r, string exceptionMessage)
+    [InlineData(new double[] { 0 }, ExceptionMessages.RadiusIsLessThanOrEqualZero)]
+    [InlineData(new double[] { -1 }, ExceptionMessages.RadiusIsLessThanOrEqualZero)]
+    [InlineData(new double[] { }, ExceptionMessages.CircleCreationWithNotOneArgument)]
+    public void CircleValidationThrowsException(double[] args, string exceptionMessage)
     {
         // Arrange, Act
-        var exception = Assert.Throws<Exception>(() => new Circle(r));
+        var exception = Assert.Throws<Exception>(() => new Circle(args));
         
         // Assert
         Assert.Equal(exceptionMessage, exception.Message);

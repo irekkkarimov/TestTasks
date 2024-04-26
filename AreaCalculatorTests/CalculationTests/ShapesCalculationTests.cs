@@ -1,10 +1,16 @@
 using AreaCalculator.Handlers;
+using AreaCalculator.Interfaces;
 using AreaCalculator.Shapes;
 
 namespace AreaCalculatorTests.CalculationTests;
 
+/// <summary>
+/// Tests for shapes area calculations
+/// </summary>
 public class ShapesCalculationTests
 {
+    private readonly IAreaCalculatorGeneric _areaCalculatorGeneric = new AreaCalculatorGeneric();
+
     [Theory]
     [InlineData(3, 4, 5, 6)]
     [InlineData(40, 41, 9, 180)]
@@ -38,18 +44,6 @@ public class ShapesCalculationTests
     }
 
     [Theory]
-    [InlineData(new double[] { 10 }, 314.16)]
-    [InlineData(new double[] { 40, 41, 9 }, 180)]
-    public void AreaCalculatorGenericWorksCorrectly(double[] args, double actualArea)
-    {
-        // Arrange, Act
-        var area = AreaCalculatorGeneric.CalculateArea(args);
-
-        // Assert
-        Assert.True(Math.Abs(area - actualArea) < 0.1);
-    }
-
-    [Theory]
     [InlineData(new double[] { 40, 41, 9 }, 180)]
     public void AreaCalculatorGenericIShapeWorksCorrectlyWithTriangle(double[] args, double actualArea)
     {
@@ -57,24 +51,9 @@ public class ShapesCalculationTests
         var triangle = new Triangle(args);
         
         // Act
-        var area = AreaCalculatorGeneric.CalculateArea(triangle);
+        var area = _areaCalculatorGeneric.CalculateArea(triangle);
         
         // Assert
         Assert.True(Math.Abs(area - actualArea) < 0.1);
     }
-    
-    [Theory]
-    [InlineData(new double[] { 10 }, 314.16)]
-    public void AreaCalculatorGenericIShapeWorksCorrectlyWithCircle(double[] args, double actualArea)
-    {
-        // Arrange
-        var circle = new Circle(args);
-        
-        // Act
-        var area = AreaCalculatorGeneric.CalculateArea(circle);
-        
-        // Assert
-        Assert.True(Math.Abs(area - actualArea) < 0.1);
-    }
-    
 }

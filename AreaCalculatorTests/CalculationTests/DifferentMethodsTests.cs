@@ -2,6 +2,9 @@ using AreaCalculator.Shapes;
 
 namespace AreaCalculatorTests.CalculationTests;
 
+/// <summary>
+/// Tests of additional feature methods in shapes
+/// </summary>
 public class DifferentMethodsTests
 {
     [Theory]

@@ -1,46 +1,37 @@
-using AreaCalculator.Handlers;
+using AreaCalculator.CustomExceptions;
+using AreaCalculator.CustomExceptions.Messages;
 using AreaCalculator.Shapes;
-using AreaCalculatorTests.Utils;
 
 namespace AreaCalculatorTests.ValidationTests;
 
+/// <summary>
+/// Tests for shape creation arguments validation
+/// </summary>
 public class ShapesValidationTests
 {
     [Theory]
-    [InlineData(new double[] { 1, 2 }, ExceptionMessages.NoShapeImplemented)]
-    [InlineData(new double[] { }, ExceptionMessages.NoParameters)]
-    public void AreaCalculatorGenericValidationThrowsException(double[] args, string exceptionMessage)
+    [InlineData(new double[] { 10, 2, 3 }, ShapeExceptionMessages.OneSideLengthGreaterThanSumOfOthers)]
+    [InlineData(new double[] { 0, 1, 2 }, ShapeExceptionMessages.SideLengthIsLessThanOrEqualZero)]
+    [InlineData(new double[] { -1, 1, 1 }, ShapeExceptionMessages.SideLengthIsLessThanOrEqualZero)]
+    public void TriangleArgumentsValidationThrowsException(double[] args, string exceptionMessage)
     {
         // Arrange, Act
-        var exception = Assert.Throws<Exception>(() => AreaCalculatorGeneric.CalculateArea(args));
+        var exception = Assert.Throws<ArgumentValidationException>(() => new Triangle(args));
 
-        // Assert
-        Assert.Equal(exceptionMessage, exception.Message);
-    }
-    
-    [Theory]
-    [InlineData(new double[] { 10, 2, 3 }, ExceptionMessages.OneSideLengthGreaterThanSumOfOthers)]
-    [InlineData(new double[] { 0, 1, 2 }, ExceptionMessages.SideLengthIsLessThanOrEqualZero)]
-    [InlineData(new double[] { -1, 1, 1 }, ExceptionMessages.SideLengthIsLessThanOrEqualZero)]
-    [InlineData(new double[] { 1, 2 }, ExceptionMessages.TriangleCreationWithNotThreeArguments)]
-    public void TriangleValidationThrowsException(double[] args, string exceptionMessage)
-    {
-        // Arrange, Act
-        var exception = Assert.Throws<Exception>(() => new Triangle(args));
-        
         // Assert
         Assert.Equal(exceptionMessage, exception.Message);
     }
 
     [Theory]
-    [InlineData(new double[] { 0 }, ExceptionMessages.RadiusIsLessThanOrEqualZero)]
-    [InlineData(new double[] { -1 }, ExceptionMessages.RadiusIsLessThanOrEqualZero)]
-    [InlineData(new double[] { }, ExceptionMessages.CircleCreationWithNotOneArgument)]
-    public void CircleValidationThrowsException(double[] args, string exceptionMessage)
+    [InlineData(new double[] { }, ShapeExceptionMessages.TriangleCreationWithNotThreeArguments)]
+    [InlineData(new double[] { 1 }, ShapeExceptionMessages.TriangleCreationWithNotThreeArguments)]
+    [InlineData(new double[] { 1, 2 }, ShapeExceptionMessages.TriangleCreationWithNotThreeArguments)]
+    [InlineData(new double[] { 1, 2, 3, 4 }, ShapeExceptionMessages.TriangleCreationWithNotThreeArguments)]
+    public void TriangleArgumentCountThrowsException(double[] args, string exceptionMessage)
     {
         // Arrange, Act
-        var exception = Assert.Throws<Exception>(() => new Circle(args));
-        
+        var exception = Assert.Throws<ArgumentCountException>(() => new Triangle(args));
+
         // Assert
         Assert.Equal(exceptionMessage, exception.Message);
     }

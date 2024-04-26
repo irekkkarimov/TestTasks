@@ -1,38 +1,59 @@
 using System.Collections.Immutable;
+using AreaCalculator.CustomExceptions;
+using AreaCalculator.Interfaces;
 
 namespace AreaCalculator.Shapes;
 
+/// <summary>
+/// Triangle shape
+/// </summary>
+/// <inheritdoc cref="IShape"/>
 public class Triangle : IShape
 {
     private readonly double[] _sides;
 
-    // Constructor for initializing using an argument for each side
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="side1">First side of the triangle</param>
+    /// <param name="side2">Second side of the triangle</param>
+    /// <param name="side3">Third side of the triangle</param>
+    /// <exception cref="ArgumentValidationException">
+    /// Arguments were not validated successfully when creating instance</exception>
     public Triangle(double side1, double side2, double side3)
     {
         var sides = new[] { side1, side2, side3 };
         
         // Checking if the sides lengths meet the requirements for being triangle
         if (ValidateTriangle(sides) is (false, var errorMessage))
-            throw new ArgumentException(errorMessage);
+            throw new ArgumentValidationException(errorMessage);
 
         _sides = sides;
     }
 
-    // Constructor for initializing using an array of sides
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="sides">Sides of the triangle (Length = 3)</param>
+    /// <exception cref="ArgumentCountException">Arguments count were not correct (Must be 3)</exception>
+    /// <exception cref="ArgumentValidationException">
+    /// Arguments were not validated successfully when creating instance</exception>
     public Triangle(double[] sides)
     {
         // Checking if it's triangle
         if (sides.Length != 3)
-            throw new Exception("Triangle should have 3 sides!");
+            throw new ArgumentCountException("Triangle should have 3 sides!");
 
         // Checking if the sides lengths meet the requirements for being triangle
         if (ValidateTriangle(sides) is (false, var errorMessage))
-            throw new Exception(errorMessage);
+            throw new ArgumentValidationException(errorMessage);
 
         _sides = sides;
     }
 
-    // Returning sides array as immutable array not to let it be changed
+    /// <summary>
+    /// Sides of the triangle (Immutable)
+    /// </summary>
     public ImmutableArray<double> Sides => _sides.ToImmutableArray();
 
     private static (bool, string) ValidateTriangle(double[] sides)
@@ -72,6 +93,10 @@ public class Triangle : IShape
         return result;
     }
 
+    /// <summary>
+    /// Checks if the triangle is right (Has 90 degree angle)
+    /// </summary>
+    /// <returns>Is triangle right</returns>
     public bool CheckIfTriangleIsRight()
     {
         var area = CalculateArea();
